@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="" type="text/css" media="(min-width:720px)">
+    <style>
+        body,
+        ul,
+        input,
+        button,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: normal;
+            font-size: 1rem;
+        }
+
+        html {
+            font-family: '宋体', Arial;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        body {
+            color: black;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            --font-size: 1rem;
+            --font-color: #f5f5f5;
+            --header-background: linear-gradient(to right, #41c9ff 0%, #CD69C9 50%, white 85%);
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            box-shadow: 0px 1px 1px #888888;
+            box-sizing: border-box;
+            font-size: var(--font-size);
+        }
+
+        .logo,
+        .userimg,
+        .userinfo {
+            display: none;
+        }
+
+        .nav {
+            flex: 4 1 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+        }
+
+        .nav li,
+        .userinfo span {
+            padding: 0.5em;
+        }
+
+        .nav li:hover {
+            color: #41c9ff;
+        }
+
+        /* 控制显隐 */
+        .ios--hidden {
+            display: none;
+        }
+
+        .ios--show {
+            display: inline-block;
+        }
+
+        /* main 网格布局标题 */
+        .title,
+        .title2 {
+            text-align: center;
+        }
+
+        /* 电脑端大屏适配 */
+        @media (min-device-width:720px) {
+            body {
+                --font-size: 1rem;
+                user-select: none;
+            }
+
+            .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-image: var(--header-background);
+                color: var(--font-color);
+
+            }
+
+            .logo {
+                display: block;
+                flex: 1 0 auto;
+                margin: auto 3em;
+                text-align: center;
+                transition: all 0.2s ease-out; 
+                /* transition用于声明那些需要过渡动画的属性名(all) / 过渡动画时间 / 过渡曲线 / 延迟; */
+            }
+            .nav {
+                justify-content: flex-start;
+            }
+
+            .nav li {
+                padding: 1em 1.5em;
+                text-shadow: 0 0 5px #41b9ff;
+                cursor: pointer;
+            }
+
+            /* right user bar */
+            .userimg {
+                margin: auto 0;
+                display: block;
+                flex: 0 0 auto;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .userinfo {
+                flex: 0 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #8a8a8a;
+                cursor: pointer;
+            }
+
+            .userinfo:hover {
+                color: #2b2b2b;
+            }
+
+            /* main 网格布局 */
+            .main {
+                display: grid;
+                grid-template-rows: 12% 1fr 5fr 4% 6%;
+                grid-template-columns: 5% 3fr 1fr 5%;
+                margin-top: 50px;
+                box-sizing: border-box;
+                width: 100vw;
+                height: calc(100vh - 50px);
+                min-width: 1000px;
+                min-height: 626px;
+            }
+
+            .name {
+                grid-row: 1/2;
+                grid-column: 2/5;
+                display: flex;
+                align-items: center;
+            }
+
+            .title {
+                margin: auto 0;
+                color: #002b7c;
+                text-shadow: 1px 1px 3px #41b9ff;
+                text-align: left;
+            }
+
+            .keywords {
+                display: block;
+                grid-row: 2/3;
+                grid-column: 3/4;
+                margin: auto 1em;
+            }
+
+            .title2 {
+                margin: auto 0;
+                padding: 0.5em 0;
+                color: #5e60f3;
+                border-bottom: 1px solid #41b9ff;
+                text-shadow: 0px 1px 3px #648fe0;
+                text-align: right;
+            }
+
+            .picture {
+                grid-row: 2/4;
+                grid-column: 2/3;
+            }
+
+            .picture-image {
+                margin: auto;
+                width: 750px;
+                height: 477px;
+                background-image: url('./c0.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                box-shadow: 1px 1px 5px 1px #8b8b8b;
+            }
+
+            .content {
+                grid-row: 3/4;
+                grid-column: 3/4;
+                padding: 1em;
+                border-right: 1px solid #c5e5fa;
+            }
+
+            .content p {
+                line-height: 2em;
+                text-align: left;
+                text-indent: 2em;
+                text-shadow: 0px 1px 3px #9eb6df;
+            }
+
+            .footer {
+                grid-row: 5/6;
+                grid-column: 2/4;
+            }
+            .hr{
+                border-top: 1px solid #c5e5fa;
+            }
+            .text-center{
+                display: block;
+                text-align: center;
+            }
+
+            .help {
+                grid-row: 1/6;
+                grid-column: 1/2;
+                display: flex;
+                align-items: center;
+
+            }
+
+            .help>span {
+                padding: 0.8em 0.2em;
+                width: calc(1em + 0.4em);
+                box-shadow: 1px 1px 2px 1px #b3b3b3;
+                font-size: 0.8rem;
+                text-align: center;
+                background-color: white;
+                cursor: pointer;
+            }
+
+            .scrollbar {
+                grid-row: 1/6;
+                grid-column: 4/5;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .options {
+                margin: 1em auto;
+                padding: 2px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                border: 0px solid #444444;
+                box-shadow: 0 0px 2px #444444;
+                cursor: pointer;
+            }
+
+            .selected {
+                box-shadow: 0 0 1px 2px #6e6e6e;
+                background-color: #7e7e7e;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <header class="header">
+            <div class="logo">EasyGames<sup>®</sup></div>
+            <ul class="nav">
+                <li>Home</li>
+                <li>Docs</li>
+                <li>Download</li>
+                <li>About</li>
+                <li>Logs</li>
+            </ul>
+            <img class="userimg" src="./photo.jpg" alt="userimage" srcset="" />
+            <div class="userinfo">
+                <span class="ios--hidden">sign in</span>
+                <span class="ios--hidden ios--show">username</span>
+            </div>
+        </header>
+
+        <div class="main">
+            <div class="name">
+                <h1 class="title">简游<sup>®</sup>工具箱，一款服务于游戏玩家的桌面自动化应用。</h1>
+            </div>
+            <div class="keywords ios--hidden">
+                <h2 class="title2 ">产品介绍</h2>
+                <h2 class="title2 ios--hidden">优秀的可靠性、安全性</h2>
+                <h2 class="title2 ios--hidden">自动更新</h2>
+            </div>
+            <div class="picture">
+                <div class="picture-image"></div>
+            </div>
+            <section class="content ios--hidden">
+                <p>最佳配置已默认载入，即开即用，支持手动调节多种参数。</p>
+            </section>
+            <section class="content ">
+                <p>基于最新electron、vue框架开发，调用内置的node模块运行，可隔绝众多严苛的检测机制，拥有同类产品无法比拟的抗风险能力。</p>
+            </section>
+            <section class="content ios--hidden">
+                <p>一秒极速启动，无广告弹窗，真正的绿色软件，我们更致力于改善用户体验。</p>
+            </section>
+            <footer class="footer">
+
+                <hr class="hr" />
+                <small class="text-center"> Copyright© 2022 zhaozone.link</small>
+
+            </footer>
+            <div class="help ios--hidden">
+                <span>问题反馈</span>
+            </div>
+            <ul class="scrollbar ios--hidden">
+                <li class="options selected"></li>
+                <li class="options"></li>
+                <li class="options"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
